@@ -9,7 +9,7 @@
 
 O projeto foi desenvolvido para calcular o índice de massa corporal do usuário e identificar se o peso está ideal de acordo com a regra do IMC.
 
-O índice é calculado da seguinte forma: divide-se o peso do paciente pela sua altura elevada ao quadrado. $\frac{peso}{altura2}$
+O índice é calculado da seguinte forma: divide-se o peso do paciente pela sua altura elevada ao quadrado.
 
 <h1 align="center"> Interpretação do Cálculo</h1>
 
@@ -51,7 +51,7 @@ O índice é calculado da seguinte forma: divide-se o peso do paciente pela sua 
    </tr>
 </table>
 
-## 🎨 Demonstração da Aplicação Web
+## 🎨 Demonstração da Aplicação
 
 <p>
 <img alt="Página inicial" title="Calculo" src="/app/screen/screen1.png"  width="300" />
