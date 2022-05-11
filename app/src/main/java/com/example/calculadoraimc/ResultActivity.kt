@@ -1,18 +1,19 @@
 package com.example.calculadoraimc
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
-import java.lang.Math.pow
 import java.math.RoundingMode
 import java.text.DecimalFormat
+import kotlin.math.pow
 
 class ResultActivity : AppCompatActivity() {
 
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
@@ -28,7 +29,7 @@ class ResultActivity : AppCompatActivity() {
             val df = DecimalFormat("#.#")
             df.roundingMode = RoundingMode.CEILING
 
-            var imc = weight/pow(height/100, 2.0)
+            val imc = weight/ (height / 100).pow(2.0)
 
             return df.format(imc).toDouble()
         }
@@ -38,19 +39,21 @@ class ResultActivity : AppCompatActivity() {
 
         fun resultInfo(imc: Double) : String{
 
-            if(imc < 18.5  ){
-                 return  "Peso abaixo do normal"
+            return when {
+                imc < 18.5 -> {
+                    "Peso abaixo do normal"
+                }
+                imc in 18.5..24.9 -> {
+                    "Peso Normal"
+                }
+                imc in 25.0..29.9 -> {
+                    "Sobrepeso"
+                }
+                imc in 30.0..39.9 -> {
+                    "Obesidade Grau II"
+                }
+                else -> "Obesidade Grau III ou Mórbida"
             }
-            else if (imc in 18.5..24.9){
-               return "Peso Normal"
-            }
-            else if(imc in 25.0..29.9){
-                return "Sobrepeso"
-            }
-            else if(imc in 30.0..39.9){
-               return "Obesidade Grau II"
-            }
-            return "Obesidade Grau III ou Mórbida"
         }
         mTextViewInfo.text = "" + resultInfo(doCalculateIMC(height,weight))
 
